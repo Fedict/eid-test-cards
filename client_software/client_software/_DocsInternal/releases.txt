@@ -1,0 +1,41 @@
+Release 1.0
+===========
+
+- Jun 2009
+
+- svn rev. 5721 
+
+- Win32 (XP), Fedora 10, Mac OS 10.4+5
+
+
+Release 1.1
+===========
+
+- Oct 2010
+
+- svn rev. 6286
+
+- Only for Win32 (fixes in the wide char functions)
+
+
+Release 1.2
+===========
+
+- Sept 2011
+
+- svn rev. 6780
+
+- 32 and 64 bit for WinXP/7, Fedora 15 (also Ubuntu), Mac OS 10.6+7
+
+- User Guide slightly updated
+
+Release 1.3 (Linux only)
+========================
+
+- march 2013
+
+- svn rev. 7349
+
+- Fixes for 32 and 64 bit Linux (should now work too on OpenSuse and Debian)
+
+- User Guide updated

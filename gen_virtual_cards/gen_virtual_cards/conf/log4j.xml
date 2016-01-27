@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration>
+
+
+ <appender name="eid" class="org.jboss.logging.appender.DailyRollingFileAppender">
+    <param name="File" value="./log/eid.log"/>
+    <param name="Append" value="true"/>
+    <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %-5p [%c] [%t][%x] %m%n"/>
+    </layout>
+ </appender>
+
+  
+  <root>
+    <priority value="info"/>
+    <appender-ref ref="console"/> 
+    <appender-ref ref="eid"/> 
+  </root>
+
+
+</log4j:configuration>

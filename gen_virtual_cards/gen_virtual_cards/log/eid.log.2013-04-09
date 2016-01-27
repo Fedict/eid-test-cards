@@ -1,0 +1,12 @@
+2013-04-09 16:04:39,009 INFO  [com.zsc.eid.chipfilegenerator.ChipFileGenerator] [main][] start generate 59200005668A
+2013-04-09 16:04:39,023 INFO  [com.zsc.eid.chipfilegenerator.CAEid] [main][] ------------------------------serialNumber=1972050152567,givenName=Stef11 ,SN=Hoeben,CN=Stef11 Hoeben (Authentication),C=BE issued by CN=eID test Foreigner CA,C=BE------------------------------
+2013-04-09 16:04:39,129 INFO  [com.zsc.eid.chipfilegenerator.ChipFileGenerator] [main][] end generate 59200005668A
+2013-04-09 16:10:28,491 INFO  [com.zsc.eid.chipfilegenerator.ChipFileGenerator] [main][] start generate 59200005668A
+2013-04-09 16:10:28,503 INFO  [com.zsc.eid.chipfilegenerator.CAEid] [main][] ------------------------------serialNumber=1972050152567,givenName=Stef11 ,SN=Hoeben,CN=Stef11 Hoeben (Authentication),C=BE issued by CN=eID test Foreigner CA,C=BE------------------------------
+2013-04-09 16:10:28,595 INFO  [com.zsc.eid.chipfilegenerator.ChipFileGenerator] [main][] end generate 59200005668A
+2013-04-09 18:30:54,126 INFO  [com.zsc.eid.chipfilegenerator.ChipFileGenerator] [main][] start generate 59200005668A
+2013-04-09 18:30:54,139 INFO  [com.zsc.eid.chipfilegenerator.CAEid] [main][] ------------------------------serialNumber=1972050152567,givenName=Stef11 ,SN=Hoeben,CN=Stef11 Hoeben (Authentication),C=BE issued by CN=eID test Foreigner CA,C=BE------------------------------
+2013-04-09 18:30:54,237 INFO  [com.zsc.eid.chipfilegenerator.ChipFileGenerator] [main][] end generate 59200005668A
+2013-04-09 18:31:26,576 INFO  [com.zsc.eid.chipfilegenerator.ChipFileGenerator] [main][] start generate 59200005668A
+2013-04-09 18:31:26,589 INFO  [com.zsc.eid.chipfilegenerator.CAEid] [main][] ------------------------------serialNumber=1972050152567,givenName=Stef11 ,SN=Hoeben,CN=Stef11 Hoeben (Authentication),C=BE issued by CN=eID test Foreigner CA,C=BE------------------------------
+2013-04-09 18:31:28,989 INFO  [com.zsc.eid.chipfilegenerator.ChipFileGenerator] [main][] end generate 59200005668A

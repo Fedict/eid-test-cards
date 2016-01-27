@@ -1,0 +1,37 @@
+TARGET = ../_Binaries/EidInfraTest
+
+LIB_UNIT_TEST = ../../ThirdParty/unittest-cpp-1.3/UnitTest++/libUnitTest_64++.a
+
+HEADERS = CommandTestHeader.h utils2.h
+SOURCES = CommandTest.cpp ControlFileTest.cpp EidInfraTest.cpp SoftCardTest.cpp utils2.cpp XMLTest.cpp \
+	commandtestfuctions.cpp ControlTest.cpp FileStructureTest.cpp SoftReaderManagerTest.cpp \
+	VirtualCardTest.cpp \
+	../pcsctool/utils.cpp ../pcsctool/pcscerr2string.cpp \
+	../EidTestinfraLib/Logger.cpp ../EidTestinfraLib/controlFileAccess.cpp \
+	../EidTestinfraLib/virtualCardAccess.cpp ../EidTestinfraLib/Mutex.cpp \
+	../EidTestinfraLib/util.cpp ../EidTestinfraLib/xml.cpp \
+	../pcscproxy/APDURequest.cpp  ../pcscproxy/Control.cpp ../pcscproxy/HexUtils.cpp \
+	../pcscproxy/SoftCard.cpp ../pcscproxy/SoftReaderManager.cpp ../pcscproxy/WinscardImpl.cpp \
+	../pcscproxy/Carddata.cpp ../pcscproxy/FileStructure.cpp ../pcscproxy/SoftReader.cpp \
+	../pcscproxy/Transaction.cpp ../pcscproxy/linux/proxy_winscard.cpp \
+	../pcscproxy/linux/proxy_winscard_imp.cpp ../pcscproxy/linux/data_winscard.cpp
+
+CPPFLAGS = -Wall -O3 -Wno-deprecated-declarations -DMAC_OS_X
+INCLUDES = -I../EidTestinfraLib -I../pcscproxy -I../pcscproxy/linux -I../pcsctool \
+	-I/System/Library/Frameworks/PCSC.framework/Headers/ \
+	-I../../ThirdParty/unittest-cpp-1.3/UnitTest++/src/
+LIBS = -ldl -lpthread $(LIB_UNIT_TEST) -Wl,-framework -Wl,PCSC
+CC = g++
+
+all: $(TARGET)
+
+$(TARGET): $(SOURCES) $(HAEADERS) $(LIB_UNIT_TEST)
+	- mkdir -p ../_Binaries
+	$(CC) $(INCLUDES) $(CPPFLAGS) $(SOURCES) $(LIBS) -o $@
+
+$(LIB_UNIT_TEST):
+	cd ../../ThirdParty/unittest-cpp-1.3/UnitTest++/ && make -f Makefile.mac && cd -;
+
+clean:
+	- rm $(TARGET)
+

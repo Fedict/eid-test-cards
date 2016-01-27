@@ -1,0 +1,41 @@
+2013-07-05 17:05:37,564 INFO  [com.zsc.eid.chipfilegenerator.ChipFileGenerator] [main][] start generate 59200005668A
+2013-07-05 17:05:37,572 INFO  [com.zsc.eid.chipfilegenerator.EidPublicKey] [main][] 0000:  02 08 00 00 00 00 00 01 00 01 03 81 80 F8 19 54  ...............T
+0010:  87 05 C5 33 D4 FB 18 FF 85 8B 99 7E 73 FE DE 6C  ...3.......~s..l
+0020:  39 BA DF 3C 8C 8C C9 D1 01 43 DF E7 0E A3 BF 6B  9..<.....C.....k
+0030:  7B 68 C0 07 1D FC 53 23 A9 7A B6 CB BA 40 6B 9E  {h....S#.z...@k.
+0040:  6E C5 6E 04 62 29 4C 00 72 2E 74 CA 5F 7D 53 28  n.n.b)L.r.t._}S(
+0050:  EF A5 5C D9 3B C0 66 73 1B 3A B4 3B 52 8A A7 C6  ..\.;.fs.:.;R...
+0060:  08 8D 13 14 14 2D 31 BA 69 8D E2 92 E5 C4 8E 9F  .....-1.i.......
+0070:  28 07 7B E5 66 39 85 27 AA F5 57 0E 3F C7 61 60  (.{.f9.'..W.?.a`
+0080:  D6 F3 FB 39 3C 62 67 0B C0 D8 55 3D CC 6E F0 FE  ...9<bg...U=.n..
+0090:  53 4E 3F 52 D3 05 2B 69 59 56 30 D1 2C 33 C5 BB  SN?R..+iYV0.,3..
+00A0:  C3 4B 00 13 C0 BB 6F FF 43 F0 F0 C4 9A 1A 7E 0D  .K....o.C.....~.
+00B0:  65 44 0F E3 8E 14 F2 F0 8B 03 59 87 48 35 51 F8  eD........Y.H5Q.
+00C0:  76 3B C5 5F A7 88 B2 94 50 FD C9 70 64 3B A2 ED  v;._....P..pd;..
+00D0:  DC 20 4E 71 10 F8 8C DA BD 2E 2D E0 E1 45 AC 5C  . Nq......-..E.\
+00E0:  07 EC 07 DB 43 FC 3C 50 93 21 F5 6E A4 FE 6F 7A  ....C.<P.!.n..oz
+00F0:  8E AB FA 1C 82 9A D3 BF 6A BA 7F 9E 54 66 98 BD  ........j...Tf..
+0100:  42 55 E0 34 91 19 7A 29 FD 35 4B 05 59           BU.4..z).5K.Y   
+
+2013-07-05 17:13:12,519 INFO  [com.zsc.eid.chipfilegenerator.ChipFileGenerator] [main][] start generate 59200005668A
+2013-07-05 17:13:12,531 INFO  [com.zsc.eid.chipfilegenerator.CAEid] [main][] ------------------------------serialNumber=1972050152567,givenName=Stef11 ,SN=Hoeben,CN=Stef11 Hoeben (Authentication),C=BE issued by CN=eID test Foreigner CA,C=BE------------------------------
+2013-07-05 17:13:18,813 INFO  [com.zsc.eid.chipfilegenerator.ChipFileGenerator] [main][] end generate 59200005668A
+2013-07-05 17:14:01,270 INFO  [com.zsc.eid.chipfilegenerator.ChipFileGenerator] [main][] start generate 59200005668A
+2013-07-05 17:14:01,277 INFO  [com.zsc.eid.chipfilegenerator.EidPublicKey] [main][] 0000:  02 08 00 00 00 00 00 01 00 01 03 81 80 F8 19 54  ...............T
+0010:  87 05 C5 33 D4 FB 18 FF 85 8B 99 7E 73 FE DE 6C  ...3.......~s..l
+0020:  39 BA DF 3C 8C 8C C9 D1 01 43 DF E7 0E A3 BF 6B  9..<.....C.....k
+0030:  7B 68 C0 07 1D FC 53 23 A9 7A B6 CB BA 40 6B 9E  {h....S#.z...@k.
+0040:  6E C5 6E 04 62 29 4C 00 72 2E 74 CA 5F 7D 53 28  n.n.b)L.r.t._}S(
+0050:  EF A5 5C D9 3B C0 66 73 1B 3A B4 3B 52 8A A7 C6  ..\.;.fs.:.;R...
+0060:  08 8D 13 14 14 2D 31 BA 69 8D E2 92 E5 C4 8E 9F  .....-1.i.......
+0070:  28 07 7B E5 66 39 85 27 AA F5 57 0E 3F C7 61 60  (.{.f9.'..W.?.a`
+0080:  D6 F3 FB 39 3C 62 67 0B C0 D8 55 3D CC 6E F0 FE  ...9<bg...U=.n..
+0090:  53 4E 3F 52 D3 05 2B 69 59 56 30 D1 2C 33 C5 BB  SN?R..+iYV0.,3..
+00A0:  C3 4B 00 13 C0 BB 6F FF 43 F0 F0 C4 9A 1A 7E 0D  .K....o.C.....~.
+00B0:  65 44 0F E3 8E 14 F2 F0 8B 03 59 87 48 35 51 F8  eD........Y.H5Q.
+00C0:  76 3B C5 5F A7 88 B2 94 50 FD C9 70 64 3B A2 ED  v;._....P..pd;..
+00D0:  DC 20 4E 71 10 F8 8C DA BD 2E 2D E0 E1 45 AC 5C  . Nq......-..E.\
+00E0:  07 EC 07 DB 43 FC 3C 50 93 21 F5 6E A4 FE 6F 7A  ....C.<P.!.n..oz
+00F0:  8E AB FA 1C 82 9A D3 BF 6A BA 7F 9E 54 66 98 BD  ........j...Tf..
+0100:  42 55 E0 34 91 19 7A 29 FD 35 4B 05 59           BU.4..z).5K.Y   
+

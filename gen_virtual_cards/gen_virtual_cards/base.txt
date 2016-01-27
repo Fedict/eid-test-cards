@@ -1,0 +1,29 @@
+<friendlyName>test2</friendlyName>
+<cardNumber>59200005668B</cardNumber>
+<nationalNumber>1972050152567</nationalNumber>
+<chipNumber>534C494E336600296CFF278E5519202E</chipNumber>
+<cardValidityBegin>17.12.2007</cardValidityBegin>
+<cardValidityEnd>19.12.2057</cardValidityEnd>
+<authValidityBegin>20070202</authValidityBegin> 
+<authValidityEnd>20570404</authValidityEnd> 
+<signValidityBegin>2070505</signValidityBegin> 
+<signValidityEnd>20570606</signValidityEnd> 
+<authCertPresent>true</authCertPresent>
+<signCertPresent>true</signCertPresent>
+<cardDeliveryMunicipality>Haren</cardDeliveryMunicipality>
+<familyName>Hoeben</familyName>
+<firstName>Stef11</firstName>
+<secondName></secondName>
+<initialOf3rdName></initialOf3rdName>
+<nationality>Belg</nationality>
+<birthLocationMunicipality>Brugge</birthLocationMunicipality>
+<birthDate>15 MAI 1983</birthDate>
+<gender>M</gender>
+<nobleCondition></nobleCondition>
+<documentType>11</documentType>
+<duplicata></duplicata>
+<specialOriganizationCode></specialOriganizationCode>
+<memberOfFamily>yes</memberOfFamily>
+<streetAndNr>Statiestraat 59</streetAndNr>
+<zipCode>4000</zipCode>
+<municipality>Gent</municipality>

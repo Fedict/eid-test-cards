@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<control xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://env.dev.eid.belgium.be/eidtestinfra http://env.dev.eid.belgium.be/schemas/control.xsd">
+  <show>REAL_LAST</show>
+  <virtualcard>
+    <hardchipnr>534C494E336600296CFF232CF7131030</hardchipnr>    //Stephen
+    <file>..//_DocsInternal//virtual_stephen.xml</file>
+  </virtualcard>
+  <virtualcard>
+    <hardchipnr>534C494E336600296CFF270DF4011318</hardchipnr>    //Rogier
+    <file>..//_DocsInternal//virtual_rogier.xml</file>
+  </virtualcard>
+  <virtualcard>
+    <hardchipnr>534C494E336600296CFF262368192F16</hardchipnr>   //Flores
+    <file>..//_DocsInternal//virtual_flores.xml</file>
+  </virtualcard>
+  <virtualcard>
+    <hardchipnr>534C494E336600296CFF232CF7131033</hardchipnr>
+    <file>C:/Documents And Settings/Stephen/virtual4.xml</file>
+  </virtualcard>
+  <virtualcard>
+    <hardchipnr>534C494E336600296CFF232CF7131034</hardchipnr>
+    <file>C:/Documents And Settings/Stephen/virtual4.xml</file>
+  </virtualcard>
+  <virtualcard>
+    <hardchipnr>534C494E336600296CFF232CF7131035</hardchipnr>
+    <file>C:/Documents And Settings/Stephen/virtual6.xml</file>
+  </virtualcard>
+</control>

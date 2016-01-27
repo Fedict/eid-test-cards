@@ -1,0 +1,194 @@
+Q: I want to register my certificates in order to log on with my
+test card to the "Online Configuration/Configuration en ligne"
+using Internet Explorer; but the middleware refuses to read my card.
+
+A: The middleware doesn't accept test cards by default. For this
+you have to make a modification in the Windows Registry:
+In HKEY_LOCAL_MACHINE\SOFTWARE\BEID\certificatevalidation
+or HKEY_CURRENT_USER\SOFTWARE\BEID\certificatevalidation,
+create a REG_DWORD named "cert_allow_testcard" and set its value to 1
+in the following key.
+
+If you are using Firefox, you don't need to register the
+certificates but you have to register the BE eID PKCS11
+library into Firefox.
+
+See the User manual for more info.
+
+==============================================================
+
+Q: Using Firefox or Internet Explorer, I can't log on to the
+  "Online Configuration/Configuration en ligne" in order to
+  create virtual cards.
+
+A: make sure the eID middleware is installed,
+  http://eid.belgium.be/fr/Comment_installer_l_eID/
+
+For more info on how to authenticate with an eID card using
+Firefox or IE, see the middleware manuals for IE and Firefox:
+  http://eid.belgium.be/fr/Informations_legales_et_techniques/Mises_a_jour_des_logiciels/index.jsp
+
+==============================================================
+
+Q: Where can I find the control file?
+
+A: The control file must be on a fixed location:
+  - On Windows: in %ALLUSERSPROFILE%\BeidTestCtrl.xml
+    (typically this is "C:\Documents and Settings\All Users"
+    on WinXP and "C:\ProgramData" on Vista)
+  - On Linux and Mac OS X: in /usr/share/eidtestinfra/
+
+==============================================================
+
+Q: The control file can be written by anyone, isn't this
+  dangerous?
+
+A: We did our best to protect the applications that read
+  the control file against buffer overflows etc.
+  But if you plan to use virtual cards on machines other
+  then local development/test PCs, it is advised to restrict
+  write access to only those users who actually need to write
+  to it and who can be trusted.
+  
+==============================================================
+
+Q: How can I find out if I'm using the PCSC proxy?
+
+A: This depends on the platform:
+
+  - On Windows, check that the proxy winscard.dll is in
+    the same directory as where your application is.
+	If you have Visual Studio installed, you can open
+	your application with the Dependency Walker tool
+	(depends.exe) to see if it uses the proxy wincard.dll
+	instead of the winscard.dll in %windir%\system32\.
+	=> If not, then copy the winscard.dll from you installation
+	dir (typically "C:\Program Files\Eid Test Infrastructure")
+	to the directory where your application is.
+
+  - On Linux, check by typing in a command shell:
+      ldd <path_to_your_app>
+    and see if the /usr/share/eidtestinfra/libpcsclite.so is
+    used instead of the real libpcsclite.so (which typically
+    in /usr/lib)
+    => If not, make sure that /usr/share/eidtestinfra
+    is first in your LD_LIBRARY_PATH environment variable,
+    you can typically do this with the following shell command:
+      export LD_LIBRARY_PATH = /usr/share/eidtestinfra:$LD_LIBRARY_PATH
+
+ - On Mac OS X, check by opening a Terminal window (in Finder,
+   select Applications - Utilities - Terminal) and type:
+     otool -L <path_to_your_app>
+   (If you application is a .app directory, you should
+   search for the binary file inside, usually in Contents/MacOS/)
+   In the output check that /usr/share/eidtestinfra/PCSC is used
+   instead of the real PCSC lib (/System/Library/Frameworks/
+   PCSC.framework/PCSC).
+   NOTE: if you test application itself doesn't use the PCSC lib,
+   then use the otool command on the lib(s) that actually use
+   the PCSC lib.
+   => If not, you should "proxy-fy" your test application or
+   the library that actually uses the PCSC lib:
+   /usr/share/eidtestinfra/proxyfy.sh <path_to_app_or_lib>
+
+==============================================================
+
+Q: My PCSC lib is not /usr/lib/libpcsclite.so
+
+A: The PCSC proxy assumes the PCSC lib is on this location, so
+  you should create a symbolic link. E.g.
+  sudo ln -s <path_to_your_PCSC_lib> /usr/lib/libpcsclite.so
+
+==============================================================
+
+Q: I don't see my virtual card
+
+A: Below is a step-by-step checklist:
+
+1. Do you see virtual card readers? (Their names start
+  with !Virtual). To get a list of card readers, you
+  should use the PCSC SCardListReaders() function.
+  => If you do see virtual card readers, go to step 6;
+  otherwise continue with step 2.
+
+2. Is your application using the PCSC proxy?
+  See the question "How can I find out if I'm using
+  the PCSC proxy?"
+
+3. Is the BeidTestCtrl.xml file present? (See the question
+   "Where can I find the control file?")
+  => If it is not present, (re-)install the eidtestinfra
+  software.
+
+4. Is the BeidTestCtrl.xml a valid xml file? (Try opening
+  it with a browser).
+  => If not then empty it and run the control GUI to fill
+  it again. If the file is not present, (re-)install the
+  eidtestinfra software.
+
+5. Does the BeidTestCtrl.xml contain a line like this:
+    <show>HIDE_VIRTUAL</show>
+  => If it does, change the value to HIDE_REAL, REAL_FIRST
+  or REAL_LAST.
+
+6. Does the BeidTestCtrl.xml contain an entry like this:
+    <virtualcard>
+      <hardchipnr>534C494E336600296CFF232CF7131030</hardchipnr>
+      <file>/tmp/jane1.xml</file>
+    </virtualcard>
+  The <hardchipnr> value should be the chip number of the
+  physical test card you are using. The <file> value should
+  be the path of a virtual contents file
+  => If not, then use the control GUI or control command line
+  tool to specify which virtual card should be used for you
+  test card.
+
+7. Does the path in the <file> value exist and does it contain
+   a valid xml file? Is the <physicalCardChipNumber> in this
+   file the same as in the BeidTestCtrl.xml file?
+   => If not then the  file is corrupt and you should use another
+   virtual card (or generate a new one).
+
+==============================================================
+
+Q: The BE eID middleware gives an "unknown card" instead of
+  showing my virtual card.
+
+A: See the question " My virtual card returns SW12 = 6D 00
+  for each APDU I send?"
+
+==============================================================
+
+Q: My virtual card returns SW12 = 6D 00 for each APDU I send?
+
+A: This means that the PCSC proxy lib is used but that the
+  virtual card couldn't be found or couldn't be used (because
+  it is corrupt or belongs to another physical test card then
+  the one present in your reader).
+
+  - Check in the control file (see question "Where can I find
+    the control file?") if there is an entry for the <hardchipnr>,
+    of your physical test card and whether the corresponding <file>
+    is the path to an existing file.
+    => If not then use the control GUI to specify which virtual
+    card to use for that physical test card.
+
+  - Check if the virtual contents file is a valid XML file and
+    contains as value for the <physicalCardChipNumber> the chip
+    number of your physical test card.
+    => If not then the virtual card contents file is corrupt
+    or belongs to another physical test card. So you should
+    insert that other physical test card. Or you should use
+    the control tools to specify which virtual card should be
+    used for the physical test card that is currently in your
+    reader.
+
+==============================================================
+
+Q: I renamed my virtual card contents file and now it no longer
+  shows up in the control GUI or control command line app?
+
+A: The control tools search for files that end with .xml, so you
+  have to make sure they all end with .xml.
+
+==============================================================
