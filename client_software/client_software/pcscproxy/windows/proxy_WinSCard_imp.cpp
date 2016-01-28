@@ -1,7 +1,7 @@
 #include "proxy_WinSCard_imp.h"
 #include "WinscardImpl.h"
 #include <windows.h>
-#include <atlbase.h>
+//#include <atlbase.h>
 
 // NULL terminated string array containg the possible locations of the lib to be proxied
 const char *REAL_LIBS[] = {
@@ -24,6 +24,18 @@ void proxy_exit()
 {
     if (impl)
     	delete impl;
+}
+
+//caller is responsible for freeing the returned string
+//utf8len is the length of the returned string in bytes, excluding the terminating null
+char* Utf16ToUtf8(const wchar_t * utf16string, unsigned long* utf8len)
+{
+	int utf8bytesize = WideCharToMultiByte(CP_UTF8, 0, utf16string, -1, NULL, 0, NULL, NULL);
+	char *utf8string = (char*) malloc(utf8bytesize);
+	WideCharToMultiByte(CP_UTF8, 0, utf16string, -1, utf8string, utf8bytesize, NULL, NULL);
+	*utf8len = utf8bytesize - 1;
+
+	return utf8string;
 }
 
 #ifdef USE_PROXY_LIB_FOR_SCardEstablishContext
@@ -71,7 +83,8 @@ WINSCARDAPI LONG WINAPI imp_SCardListReadersA(     SCARDCONTEXT hContext,      L
 #ifdef USE_PROXY_LIB_FOR_SCardListReadersW
 WINSCARDAPI LONG WINAPI imp_SCardListReadersW(     SCARDCONTEXT hContext,      LPCWSTR mszGroups,     LPWSTR mszReaders,  LPDWORD pcchReaders)
 {
-    CW2A a_mszGroups(mszGroups);
+	unsigned long len_a;
+	char* a_mszGroups = Utf16ToUtf8(mszGroups, &len_a);
 
     bool bAutoAlloc = SCARD_AUTOALLOCATE == *pcchReaders;
     char *a_mszReaders = NULL;
@@ -107,6 +120,8 @@ WINSCARDAPI LONG WINAPI imp_SCardListReadersW(     SCARDCONTEXT hContext,      L
 
     if (bAllocatedMemory)
         free(a_mszReaders);
+	if(a_mszGroups != NULL)
+		free(a_mszGroups);
 
     return result;
 }
@@ -358,9 +373,13 @@ WINSCARDAPI LONG WINAPI imp_SCardGetStatusChangeW(     SCARDCONTEXT hContext,   
 	for (size_t i = 0; i < cReaders; i++)
 	{
 		//convert szReader to ansi
-		size_t readerNameLen = wcslen(rgReaderStates[i].szReader);
-		LPSTR  a_szReader    = new CHAR[readerNameLen + 1];
-		memcpy(a_szReader, CW2A(rgReaderStates[i].szReader), readerNameLen + 1);
+		//size_t readerNameLen = wcslen(rgReaderStates[i].szReader);
+		 unsigned long utf8len;
+		//LPSTR  a_szReader    = new CHAR[readerNameLen + 1];
+
+		LPSTR a_szReader = Utf16ToUtf8(rgReaderStates[i].szReader, &utf8len);
+
+		//memcpy(a_szReader, CW2A(rgReaderStates[i].szReader), readerNameLen + 1);
 		a_rgReaderStates[i].szReader = a_szReader;
 		//copy relevant params
 		a_rgReaderStates[i].dwCurrentState = rgReaderStates[i].dwCurrentState;
@@ -406,7 +425,13 @@ WINSCARDAPI LONG WINAPI imp_SCardConnectA(     SCARDCONTEXT hContext,      LPCST
 #ifdef USE_PROXY_LIB_FOR_SCardConnectW
 WINSCARDAPI LONG WINAPI imp_SCardConnectW(     SCARDCONTEXT hContext,      LPCWSTR szReader,      DWORD dwShareMode,      DWORD dwPreferredProtocols,     LPSCARDHANDLE phCard,     LPDWORD pdwActiveProtocol)
 {
-    return impl->SCardConnect(hContext, CW2A(szReader), dwShareMode, dwPreferredProtocols, phCard, pdwActiveProtocol);
+	unsigned long len_a;
+	char* szReader_a = Utf16ToUtf8(szReader, &len_a);
+	LONG retVal;
+    retVal = impl->SCardConnect(hContext, szReader_a, dwShareMode, dwPreferredProtocols, phCard, pdwActiveProtocol);
+	if(szReader_a != NULL)
+		free(szReader_a);
+	return retVal;
 }
 #endif
 

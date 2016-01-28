@@ -18,7 +18,7 @@
 #include "SoftCard.h"
 #include "Control.h"
 #include "virtualCardAccess.h"
-#include "UnitTest++.h"
+//#include "UnitTest++.h"
 #include "xml.h"
 #include "util.h"
 #include "utils.h"

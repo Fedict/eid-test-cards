@@ -2,24 +2,24 @@
 //
 #include "resource.h"
 
-#define APSTUDIO_READONLY_SYMBOLS
+//#define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "afxres.h"
+//#include "afxres.h"
 
 /////////////////////////////////////////////////////////////////////////////
-#undef APSTUDIO_READONLY_SYMBOLS
+//#undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
 // English (U.K.) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
-#ifdef _WIN32
-LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
-#pragma code_page(1252)
-#endif //_WIN32
+//#ifdef _WIN32
+//LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+//#pragma code_page(1252)
+//#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -47,7 +47,7 @@ BEGIN
             VALUE "CompanyName", "Belgian Government"
             VALUE "Description", "BE eID test PCSC proxy"
             VALUE "FileVersion", "1, 1, 0, 0"
-            VALUE "Info", "See http://dev.eid.belgium.be"
+            VALUE "Info", "See http://eid.belgium.be"
             VALUE "ProductName", "BE eID test PCSC proxy"
             VALUE "ProductVersion", "1, 1, 0, 0"
         END
@@ -75,10 +75,10 @@ BEGIN
     "\r\0"
 END
 
-2 TEXTINCLUDE 
-BEGIN
-    "#include ""afxres.h""\r\0"
-END
+//2 TEXTINCLUDE 
+//BEGIN
+//    "#include ""afxres.h""\r\0"
+//END
 
 #endif    // APSTUDIO_INVOKED
 
@@ -92,7 +92,8 @@ END
 //
 // Generated from the TEXTINCLUDE 3 resource.
 //
-
+
+
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 

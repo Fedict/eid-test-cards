@@ -23,7 +23,7 @@
 #include "SoftReaderManager.h"
 #include "SoftReader.h"
 #include "SoftCard.h"
-#include <UnitTest++.h>
+#include <unittest++.h>
 #include "Control.h"
 
 #pragma pack(1)

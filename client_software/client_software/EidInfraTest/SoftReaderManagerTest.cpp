@@ -108,7 +108,8 @@ TEST(Readers)
 	SoftReader *sr = srmng.getSoftReaderByName(softReaderName, N_SOFT);
 	CHECK(sr->getSoftReaderName().length());
 	CHECK(sr->getHardReaderName().length());
-	SoftCard                            *sc = sr->createSoftCard(1234);
+	SoftCard                            *sc = sr->createSoftCard(1234);
+
 	DWORD                               bytes   = 7;
 	BYTE                                data[7] = { 0x00, 0xA4, 0x02, 0x0C, 0x02, 0xDF, 0x00 };
 	const zetes::pcscproxy::APDURequest apduReq = zetes::pcscproxy::APDURequest::createAPDURequest(data, bytes);
