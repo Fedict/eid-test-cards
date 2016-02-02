@@ -31,7 +31,7 @@ TEST(GetVirtualFilePaths)
 {
 	Control ctl(createRelativePath(DEFAULT_CONTROL_FILE_NAME));
 
-	CHECK_EQUAL(REAL_LAST, ctl.getListReaderOrder());
+	CHECK_NUM_EQUAL(REAL_LAST, ctl.getListReaderOrder());
 
 	VirtualCard Stephen(ctl.getSoftCardFileLocation(StephensChipNr).c_str());
 	CHECK_EQUAL("534C494E336600296CFF232CF7131031", Stephen.GetChipnr());
@@ -48,7 +48,7 @@ TEST(GetVirtualFilePathsNoCrLf)
 {
 	Control ctl(createRelativePath(ALTERNATE_CONTROL_FILE_NAME));
 
-	CHECK_EQUAL(REAL_LAST, ctl.getListReaderOrder());
+	CHECK_NUM_EQUAL(REAL_LAST, ctl.getListReaderOrder());
 
 	VirtualCard Stephen(ctl.getSoftCardFileLocation(StephensChipNr).c_str());
 	CHECK_EQUAL("534C494E336600296CFF232CF7131031", Stephen.GetChipnr());
@@ -64,15 +64,15 @@ TEST(BadControlFiles)
 {
 	{
 		Control ctl("nosuchfile");
-		CHECK_EQUAL("", ctl.getSoftCardFileLocation((const unsigned char *) "xxxxxxxxxxxxxxxx"));
-		CHECK_EQUAL(REAL_LAST, ctl.getListReaderOrder());
+		CHECK_EQUAL("", ctl.getSoftCardFileLocation((const unsigned char *) "xxxxxxxxxxxxxxxx").c_str());
+		CHECK_NUM_EQUAL(REAL_LAST, ctl.getListReaderOrder());
 	}
 
 	if (writeFile("empty", "", 0))
 	{
 		Control ctl("empty");
-		CHECK_EQUAL("", ctl.getSoftCardFileLocation((const unsigned char *) "xxxxxxxxxxxxxxxx"));
-		CHECK_EQUAL(REAL_LAST, ctl.getListReaderOrder());
+		CHECK_EQUAL("", ctl.getSoftCardFileLocation((const unsigned char *) "xxxxxxxxxxxxxxxx").c_str());
+		CHECK_NUM_EQUAL(REAL_LAST, ctl.getListReaderOrder());
 	}
 
 	unsigned char *buf = new unsigned char [100000];
@@ -82,8 +82,8 @@ TEST(BadControlFiles)
 	if (writeFile("bigrandom", buf, 100000))
 	{
 		Control ctl("bigrandom");
-		CHECK_EQUAL("", ctl.getSoftCardFileLocation((const unsigned char *) "xxxxxxxxxxxxxxxx"));
-		CHECK_EQUAL(REAL_LAST, ctl.getListReaderOrder());
+		CHECK_EQUAL("", ctl.getSoftCardFileLocation((const unsigned char *) "xxxxxxxxxxxxxxxx").c_str());
+		CHECK_NUM_EQUAL(REAL_LAST, ctl.getListReaderOrder());
 	}
 	delete [] buf;
 
@@ -92,8 +92,8 @@ TEST(BadControlFiles)
 	if (writeFile("bigzeros", buf, 100000))
 	{
 		Control ctl("bigzeros");
-		CHECK_EQUAL("", ctl.getSoftCardFileLocation((const unsigned char *) "xxxxxxxxxxxxxxxx"));
-		CHECK_EQUAL(REAL_LAST, ctl.getListReaderOrder());
+		CHECK_EQUAL("", ctl.getSoftCardFileLocation((const unsigned char *) "xxxxxxxxxxxxxxxx").c_str());
+		CHECK_NUM_EQUAL(REAL_LAST, ctl.getListReaderOrder());
 	}
 	delete [] buf;
 
@@ -105,8 +105,8 @@ TEST(BadControlFiles)
 	if (writeFile("bigvisibility", conts, strlen(conts)))
 	{
 		Control ctl("bigvisibility");
-		CHECK_EQUAL(REAL_LAST, ctl.getListReaderOrder());
-		CHECK_EQUAL("", ctl.getSoftCardFileLocation((const unsigned char *) "xxxxxxxxxxxxxxxx"));
+		CHECK_NUM_EQUAL(REAL_LAST, ctl.getListReaderOrder());
+		CHECK_EQUAL("", ctl.getSoftCardFileLocation((const unsigned char *) "xxxxxxxxxxxxxxxx").c_str());
 	}
 
 	conts =
@@ -121,7 +121,7 @@ TEST(BadControlFiles)
 	if (writeFile("bigpath", conts, strlen(conts)))
 	{
 		Control ctl("bigpath");
-		CHECK_EQUAL(HIDE_REAL, ctl.getListReaderOrder());
+		CHECK_NUM_EQUAL(HIDE_REAL, ctl.getListReaderOrder());
 		unsigned char chipnr[] = {0x53,0x4C,0x49,0x4E,0x33,0x66,0x00,0x29,0x6C,0xFF,0x26,0x23,0x66,0x0B,0x08,0x26};
 		std::string locStr = ctl.getSoftCardFileLocation(chipnr);
 		const char *loc = locStr.c_str();
@@ -135,8 +135,8 @@ TEST(BadControlFiles)
 	if (writeFile("badxml", conts, strlen(conts)))
 	{
 		Control ctl("badxml");
-		CHECK_EQUAL(REAL_LAST, ctl.getListReaderOrder());
+		CHECK_NUM_EQUAL(REAL_LAST, ctl.getListReaderOrder());
 		unsigned char chipnr[] = {0x53,0x4C,0x49,0x4E,0x33,0x66,0x00,0x29,0x6C,0xFF,0x26,0x23,0x66,0x0B,0x08,0x26};
-		CHECK_EQUAL("", ctl.getSoftCardFileLocation(chipnr));
+		CHECK_EQUAL("", ctl.getSoftCardFileLocation(chipnr).c_str());
 	}
 }

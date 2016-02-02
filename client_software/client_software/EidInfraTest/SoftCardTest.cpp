@@ -19,7 +19,7 @@ TEST(loadFromFile)
 
 	sc.loadFromFile(VIRT_STEPHEN, hardNumber);
 
-	CHECK_EQUAL(1234, sc.getHardHandle());
-	CHECK_EQUAL(5678, sc.getSoftHandle());
+	CHECK_NUM_EQUAL(1234, sc.getHardHandle());
+	CHECK_NUM_EQUAL(5678, sc.getSoftHandle());
 }
 

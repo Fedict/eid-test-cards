@@ -79,16 +79,16 @@ TEST(selectByPath)
 
 	CHECK(!f->isDir());
 	content = f->getContent();
-	CHECK_EQUAL(0x61, content[0]);
-	CHECK_EQUAL(0x02, content[f->size() - 1]);
+	CHECK_NUM_EQUAL(0x61, content[0]);
+	CHECK_NUM_EQUAL(0x02, content[f->size() - 1]);
 
 	CHECK(fs.selectByPath(p2, sizeof(p2)));
 
 	f = fs.getSelected();
 	CHECK(!f->isDir());
 	content = f->getContent();
-	CHECK_EQUAL(0xa7, content[0]);
-	CHECK_EQUAL(0xc8, content[f->size() - 1]);
+	CHECK_NUM_EQUAL(0xa7, content[0]);
+	CHECK_NUM_EQUAL(0xc8, content[f->size() - 1]);
 
 	CHECK(fs.selectByPath(p2, sizeof(p2) - 2));
 	selected1 = fs.getSelected();
@@ -104,7 +104,7 @@ TEST(selectByPath)
 
 	selected1->getPath(pathBuf1, &ArrayLength);
 	selected2->getPath(pathBuf2, &ArrayLength);
-	CHECK_ARRAY_EQUAL((BYTE *) pathBuf1, (BYTE *) pathBuf2, (int) ArrayLength); //check that wrong FID did not change selected
+	CHECK_BYTE_ARRAY_EQUAL((BYTE *) pathBuf1, (BYTE *) pathBuf2, (int) ArrayLength); //check that wrong FID did not change selected
 
 	CHECK(!fs.selectByFID(p4));                                                 //single byte array make sure no progem upsets
 	CHECK(!fs.selectByFID(p5));                                                 //mode than expeced bytes make sure no program upsets
@@ -133,7 +133,7 @@ TEST(selectByFID)
 	ArrayLength = sizeof(p3);
 	selected2->getFID((BYTE *) pathBuf2, &ArrayLength);
 
-	CHECK_ARRAY_EQUAL((BYTE *) pathBuf1, (BYTE *) pathBuf2, 2); //check that wrong FID did not change selected and no crash!
+	CHECK_BYTE_ARRAY_EQUAL((BYTE *) pathBuf1, (BYTE *) pathBuf2, 2); //check that wrong FID did not change selected and no crash!
 
 	CHECK(!fs.selectByPath(p4, sizeof(p4)));                    //single byte array should fail but make sure no crashes
 	CHECK(!fs.selectByPath(p5, sizeof(p5)));                    //more than expected bytes should fail but make sure no crashes
@@ -163,5 +163,5 @@ TEST(selectByAID)
 	ArrayLength = sizeof(BELPIC_AID);
 	selected2->getAID((BYTE *) pathBuf2, &ArrayLength);
 
-	CHECK_ARRAY_EQUAL((BYTE *) pathBuf1, (BYTE *) pathBuf2, 2); //check that wrong AID did not change selected
+	CHECK_BYTE_ARRAY_EQUAL((BYTE *) pathBuf1, (BYTE *) pathBuf2, 2); //check that wrong AID did not change selected
 }

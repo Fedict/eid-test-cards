@@ -139,7 +139,7 @@ TEST(Transactions)
 	p2          = new ThreadParams(0, true);
 	hThreads[0] = CreateThread(NULL, THREAD_STACK_SIZE, SoftReaderThread1, p1, NULL, &iID[0]);
 	hThreads[1] = CreateThread(NULL, THREAD_STACK_SIZE, SoftReaderThread2, p2, NULL, &iID[1]);
-	CHECK_EQUAL(WAIT_OBJECT_0, WaitForMultipleObjects(2, hThreads, TRUE, INFINITE));
+	CHECK_NUM_EQUAL(WAIT_OBJECT_0, WaitForMultipleObjects(2, hThreads, TRUE, INFINITE));
 
 	Reader1StartTime = (p1->startHour * 60 * 60) + (p1->startMinute * 60) + p1->startSecond;
 	Reader2EndTime   = (p2->endHour * 60 * 60) + (p2->endMinute * 60) + p2->endSecond;
@@ -161,7 +161,7 @@ TEST(Transactions)
 	p2->activateTransaction = false;
 	hThreads[0]             = CreateThread(NULL, THREAD_STACK_SIZE, SoftReaderThread1, p1, NULL, &iID[0]);
 	hThreads[1]             = CreateThread(NULL, THREAD_STACK_SIZE, SoftReaderThread2, p2, NULL, &iID[1]);
-	CHECK_EQUAL(WAIT_OBJECT_0, WaitForMultipleObjects(2, hThreads, TRUE, INFINITE));
+	CHECK_NUM_EQUAL(WAIT_OBJECT_0, WaitForMultipleObjects(2, hThreads, TRUE, INFINITE));
 
 	Reader1StartTime = (p1->startHour * 60 * 60) + (p1->startMinute * 60) + p1->startSecond;
 	Reader2EndTime   = (p2->endHour * 60 * 60) + (p2->endMinute * 60) + p2->endSecond;
@@ -175,7 +175,7 @@ TEST(Transactions)
 	p2->activateTransaction = false;
 	hThreads[0]             = CreateThread(NULL, THREAD_STACK_SIZE, SoftReaderThread1, p1, NULL, &iID[0]);
 	hThreads[1]             = CreateThread(NULL, THREAD_STACK_SIZE, SoftReaderThread2, p2, NULL, &iID[1]);
-	CHECK_EQUAL(WAIT_OBJECT_0, WaitForMultipleObjects(2, hThreads, TRUE, INFINITE));
+	CHECK_NUM_EQUAL(WAIT_OBJECT_0, WaitForMultipleObjects(2, hThreads, TRUE, INFINITE));
 
 	delete p1;
 	delete p2;

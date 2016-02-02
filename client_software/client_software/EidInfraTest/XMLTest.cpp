@@ -147,9 +147,9 @@ TEST(BigData)
 
 		content[MAX_CONTENT + 1] = 'x';
 		CHECK(xml.GetNextElement(inFile, element, MAX_ELEMENT, content, MAX_CONTENT));
-		CHECK_EQUAL('x', content[MAX_CONTENT + 1]);
-		CHECK_EQUAL(123456, k1);
-		CHECK_EQUAL(234567, k2);
+		CHECK_NUM_EQUAL('x', content[MAX_CONTENT + 1]);
+		CHECK_NUM_EQUAL(123456, k1);
+		CHECK_NUM_EQUAL(234567, k2);
 
 		fclose(inFile);
 
@@ -166,7 +166,7 @@ TEST(BigData)
 		char contentBig[9502];
 		contentBig[9501] = 'x';
 		CHECK(xml.GetNextElement(inFile, element, MAX_ELEMENT, contentBig, 9500));
-		CHECK_EQUAL('x', contentBig[9501]);
+		CHECK_NUM_EQUAL('x', contentBig[9501]);
 
 		fclose(inFile);
 	}
@@ -200,10 +200,10 @@ TEST(BigData)
 
 		element[MAX_ELEMENT + 1] = 'x';
 		CHECK(!xml.GetNextElement(inFile, element, MAX_ELEMENT, content, MAX_CONTENT));
-		CHECK_EQUAL('\0', content[0]);
-		CHECK_EQUAL('\0', element[0]);
-		CHECK_EQUAL('x', element[MAX_ELEMENT + 1]);
-		CHECK_EQUAL(123456, k1);
-		CHECK_EQUAL(234567, k2);
+		CHECK_NUM_EQUAL('\0', content[0]);
+		CHECK_NUM_EQUAL('\0', element[0]);
+		CHECK_NUM_EQUAL('x', element[MAX_ELEMENT + 1]);
+		CHECK_NUM_EQUAL(123456, k1);
+		CHECK_NUM_EQUAL(234567, k2);
 	}
 }

@@ -18,11 +18,11 @@ TEST(GetVirtualFilePath1)
 	ctl.Add("hardchipnr 6", "C:/Documents And Settings/Stephen/virtual6.xml");
 	ctl.Save("ControlTest.xml");
 
-	CHECK_EQUAL("C:/Documents And Settings/Stephen/virtual1.xml", ctl.GetVirtualFilePath("hardchipnr 1"));
-	CHECK_EQUAL("C:/Documents And Settings/Stephen/virtual2.xml", ctl.GetVirtualFilePath("hardchipnr 2"));
-	CHECK_EQUAL("C:/Documents And Settings/Stephen/virtual6.xml", ctl.GetVirtualFilePath("hardchipnr 6"));
-	CHECK_EQUAL(ctl.GetVirtualFilePath("hardchipnr 20"), ""); // no such hard card!
-	CHECK_EQUAL(ctl.GetVirtualFilePath("hardchipnr 5"), "");  //empty path
+	CHECK_EQUAL("C:/Documents And Settings/Stephen/virtual1.xml", ctl.GetVirtualFilePath("hardchipnr 1").c_str());
+	CHECK_EQUAL("C:/Documents And Settings/Stephen/virtual2.xml", ctl.GetVirtualFilePath("hardchipnr 2").c_str());
+	CHECK_EQUAL("C:/Documents And Settings/Stephen/virtual6.xml", ctl.GetVirtualFilePath("hardchipnr 6").c_str());
+	CHECK_EQUAL(ctl.GetVirtualFilePath("hardchipnr 20").c_str(), ""); // no such hard card!
+	CHECK_EQUAL(ctl.GetVirtualFilePath("hardchipnr 5").c_str(), "");  //empty path
 }
 
 TEST(GetShowFile)
