@@ -1,0 +1,36 @@
+# Windows makefile (VS 2005), run with:  nmake /f MAKEFILE {debug | release}
+
+# Here you can change the name of the proxy DLL to be build
+TARGET = winscard.dll
+
+# Specify here the include dirs (e.g. the dir containing WinSCard.h)
+# E.g. INCLUDEDIRS = /I "C:\Program Files\SDK1 /I C:\SDK2
+INCLUDEDIRS = /IC:\Program Files\Microsoft Visual Studio 8\vc\PlatformSDK\Include
+
+HEADERS = proxy_WinSCard.h proxy_WinSCard_imp.h data_WinSCard.h
+
+LIBS = kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
+
+DEFFILE = proxy_WinSCard.def
+
+OBJ = proxy_WinSCard.obj proxy_WinSCard_imp.obj data_WinSCard.obj
+
+CFLAGS_release = /O2 /GL /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_WINDLL" /FD /EHsc /MD /W3 /nologo /c /Wp64 /Zi /TP /errorReport:prompt
+CFLAGS_debug   = /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_USRDLL" /D "_WINDLL" /Gm /EHsc /RTC1 /MDd /W3 /nologo /c /Wp64 /ZI /TP /errorReport:prompt
+
+all: release
+
+release: $(OBJ) $(HEADERS)
+	cl $(CFLAGS_release) proxy_WinSCard.cpp
+	cl $(CFLAGS_release) proxy_WinSCard_imp.cpp
+	cl $(CFLAGS_release) data_WinSCard.cpp
+	link /OUT:$(TARGET) /INCREMENTAL:NO /NOLOGO /DLL /MANIFEST /MANIFESTFILE:$(TARGET).manifest /DEF:$(DEFFILE) /DEBUG /PDB:$(TARGET).pdb /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /MACHINE:X86 /ERRORREPORT:PROMPT  $(LIBS) $(OBJ)
+
+debug: $(OBJ) $(HEADERS)
+	cl $(CFLAGS_debug) proxy_WinSCard.cpp
+	cl $(CFLAGS_debug) proxy_WinSCard_imp.cpp
+	cl $(CFLAGS_debug) data_WinSCard.cpp
+	link /OUT:$(TARGET) /INCREMENTAL /NOLOGO /DLL /MANIFEST /MANIFESTFILE:$(TARGET).manifest /DEF:$(DEFFILE) /DEBUG /PDB:$(TARGET).pdb /SUBSYSTEM:WINDOWS /MACHINE:X86 /ERRORREPORT:PROMPT $(LIBS) $(OBJ)
+
+clean:
+	del $(OBJ) $(TARGET) *.res *.pdb *.manifest *.exp *.lib

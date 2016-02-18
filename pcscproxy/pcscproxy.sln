@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pcscproxy", "pcscproxy.vcproj", "{303B5B59-CCB9-4AD6-BE88-2804D19FCA3E}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EidIinfraLib", "..\EidTestinfraLib\EidTestinfraLib.vcproj", "{15D0994B-E1C1-41D5-9D52-7301B1560EE3}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EidIinfraTest", "..\EidInfraTest\EidInfraTest.vcproj", "{96FBBC83-9887-4861-B23F-F99ED26758F4}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pcsctool", "..\pcsctool\pcsctool.vcproj", "{31F7C76F-908C-4845-AD2A-60387CCE492F}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{303B5B59-CCB9-4AD6-BE88-2804D19FCA3E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{303B5B59-CCB9-4AD6-BE88-2804D19FCA3E}.Debug|Win32.Build.0 = Debug|Win32
+		{303B5B59-CCB9-4AD6-BE88-2804D19FCA3E}.Debug|x64.ActiveCfg = Debug|x64
+		{303B5B59-CCB9-4AD6-BE88-2804D19FCA3E}.Debug|x64.Build.0 = Debug|x64
+		{303B5B59-CCB9-4AD6-BE88-2804D19FCA3E}.Release|Win32.ActiveCfg = Release|Win32
+		{303B5B59-CCB9-4AD6-BE88-2804D19FCA3E}.Release|Win32.Build.0 = Release|Win32
+		{303B5B59-CCB9-4AD6-BE88-2804D19FCA3E}.Release|x64.ActiveCfg = Release|x64
+		{303B5B59-CCB9-4AD6-BE88-2804D19FCA3E}.Release|x64.Build.0 = Release|x64
+		{15D0994B-E1C1-41D5-9D52-7301B1560EE3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{15D0994B-E1C1-41D5-9D52-7301B1560EE3}.Debug|Win32.Build.0 = Debug|Win32
+		{15D0994B-E1C1-41D5-9D52-7301B1560EE3}.Debug|x64.ActiveCfg = Debug|x64
+		{15D0994B-E1C1-41D5-9D52-7301B1560EE3}.Debug|x64.Build.0 = Debug|x64
+		{15D0994B-E1C1-41D5-9D52-7301B1560EE3}.Release|Win32.ActiveCfg = Release|Win32
+		{15D0994B-E1C1-41D5-9D52-7301B1560EE3}.Release|Win32.Build.0 = Release|Win32
+		{15D0994B-E1C1-41D5-9D52-7301B1560EE3}.Release|x64.ActiveCfg = Release|x64
+		{15D0994B-E1C1-41D5-9D52-7301B1560EE3}.Release|x64.Build.0 = Release|x64
+		{96FBBC83-9887-4861-B23F-F99ED26758F4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{96FBBC83-9887-4861-B23F-F99ED26758F4}.Debug|Win32.Build.0 = Debug|Win32
+		{96FBBC83-9887-4861-B23F-F99ED26758F4}.Debug|x64.ActiveCfg = Debug|x64
+		{96FBBC83-9887-4861-B23F-F99ED26758F4}.Debug|x64.Build.0 = Debug|x64
+		{96FBBC83-9887-4861-B23F-F99ED26758F4}.Release|Win32.ActiveCfg = Release|Win32
+		{96FBBC83-9887-4861-B23F-F99ED26758F4}.Release|Win32.Build.0 = Release|Win32
+		{96FBBC83-9887-4861-B23F-F99ED26758F4}.Release|x64.ActiveCfg = Release|x64
+		{96FBBC83-9887-4861-B23F-F99ED26758F4}.Release|x64.Build.0 = Release|x64
+		{31F7C76F-908C-4845-AD2A-60387CCE492F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{31F7C76F-908C-4845-AD2A-60387CCE492F}.Debug|Win32.Build.0 = Debug|Win32
+		{31F7C76F-908C-4845-AD2A-60387CCE492F}.Debug|x64.ActiveCfg = Debug|x64
+		{31F7C76F-908C-4845-AD2A-60387CCE492F}.Debug|x64.Build.0 = Debug|x64
+		{31F7C76F-908C-4845-AD2A-60387CCE492F}.Release|Win32.ActiveCfg = Release|Win32
+		{31F7C76F-908C-4845-AD2A-60387CCE492F}.Release|Win32.Build.0 = Release|Win32
+		{31F7C76F-908C-4845-AD2A-60387CCE492F}.Release|x64.ActiveCfg = Release|x64
+		{31F7C76F-908C-4845-AD2A-60387CCE492F}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

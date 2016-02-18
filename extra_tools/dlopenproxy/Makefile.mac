@@ -1,0 +1,46 @@
+include ../_Builds/versions.mak
+
+TARGET = ../_Binaries/libdl_proxy.dylib.$(DLOPEN_PROXY_VERSION)
+TARGET32 = ../_Binaries/32bit/libdl_proxy.dylib.$(DLOPEN_PROXY_VERSION)
+TARGET64 = ../_Binaries/64bit/libdl_proxy.dylib.$(DLOPEN_PROXY_VERSION)
+
+TEST = ../_Binaries/testdynamic
+TEST32 = ../_Binaries/32bit/testdynamic
+TEST64 = ../_Binaries/64bit/testdynamic
+
+SOURCES = dl_proxy.c
+
+CC = gcc
+INCLUDES = -I/System/Library/Frameworks/PCSC.framework/Headers/
+CFLAGS32 = -pipe -fPIC -DMAC_OS_X -m32
+CFLAGS64 = -pipe -fPIC -DMAC_OS_X -m64
+LFLAGS = -headerpad_max_install_names -single_module -dynamiclib
+LIBS = -ldl
+
+all: $(TARGET) $(TEST)
+
+$(TARGET): $(TARGET32) $(TARGET64)
+	lipo -create $(TARGET32) $(TARGET64) -output $(TARGET)
+
+$(TARGET32): $(SOURCES)
+	- mkdir -p ../_Binaries/32bit
+	gcc $(CFLAGS32) $(INCLUDES) $(SOURCES) $(LFLAGS) $(LIBS) -o $@
+
+$(TARGET64): $(SOURCES)
+	- mkdir -p ../_Binaries/64bit
+	gcc $(CFLAGS64) $(INCLUDES) $(SOURCES) $(LFLAGS) $(LIBS) -o $@
+
+
+$(TEST): $(TEST32) $(TEST64)
+	lipo -create $(TEST32) $(TEST64) -output $(TEST)
+
+$(TEST32): pcsc.c
+	gcc -I /System/Library/Frameworks/PCSC.framework/Headers/ pcsc.c -m32 -ldl -o $@
+
+$(TEST64): pcsc.c
+	gcc -I /System/Library/Frameworks/PCSC.framework/Headers/ pcsc.c -m64 -ldl -o $@
+
+
+clean:
+	-rm $(TARGET) $(TARGET32) $(TARGET364)
+	-rm $(TEST) $(TEST32) $(TEST64)

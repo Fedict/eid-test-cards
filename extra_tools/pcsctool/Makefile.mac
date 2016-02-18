@@ -1,0 +1,25 @@
+TARGET = ../_Binaries/pcsctool
+TARGET32 = ../_Binaries/32bit/pcsctool
+TARGET64 = ../_Binaries/64bit/pcsctool
+
+SOURCES = main.cpp pcscerr2string.cpp utils.cpp
+
+CPPFLAGS32 = -Wall -O3 -fmessage-length=0 -DMAC_OS_X -m32
+CPPFLAGS64 = -Wall -O3 -fmessage-length=0 -DMAC_OS_X -m64
+INCLUDE = -I. -I/System/Library/Frameworks/PCSC.framework/Headers
+
+all: $(TARGET)
+
+$(TARGET): $(TARGET32) $(TARGET64)
+	lipo -create $(TARGET32) $(TARGET64) -output $(TARGET)
+
+clean:
+	- rm $(TARGET) $(TARGET32) $(TARGET64)
+
+$(TARGET32): $(SOURCES)
+	mkdir -p ../_Binaries/32bit
+	g++ $(INCLUDE) $(CPPFLAGS32) $(SOURCES) -Wl,-framework -Wl,PCSC -o $@
+
+$(TARGET64): $(SOURCES)
+	mkdir -p ../_Binaries/64bit
+	g++ $(INCLUDE) $(CPPFLAGS64) $(SOURCES) -Wl,-framework -Wl,PCSC -o $@

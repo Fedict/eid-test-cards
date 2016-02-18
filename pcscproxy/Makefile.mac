@@ -1,0 +1,47 @@
+include ../_Builds/versions.mak
+
+TARGET = ../_Binaries/libproxy_pcsclite.dylib.$(PROXY_LIB_VERSION)
+TARGET32 = ../_Binaries/32bit/libproxy_pcsclite.dylib.$(PROXY_LIB_VERSION)
+TARGET64 = ../_Binaries/64bit/libproxy_pcsclite.dylib.$(PROXY_LIB_VERSION)
+
+CC=g++
+CFLAGS32=-fPIC -Wall -O3 -Wno-deprecated-declarations -DMAC_OS_X -m32
+CFLAGS64=-fPIC -Wall -O3 -Wno-deprecated-declarations -DMAC_OS_X -m64
+LFLAGS=-headerpad_max_install_names -single_module -dynamiclib -compatibility_version 1.0.0
+INCLUDEDIRS=-I. -Ilinux -I/System/Library/Frameworks/PCSC.framework/Headers -I../EidTestinfraLib
+LIBS=-ldl -lpthread
+
+HEADERS= APDURequest.h Carddata.h  FileStructure.h  SoftReader.h \
+		Transaction.h  ArrayBuffer.h  Control.h  HexUtils.h SoftCard.h  \
+		SoftReaderManager.h  WinscardImpl.h  linux/proxy_winscard.h \
+		linux/proxy_winscard_imp.h linux/data_winscard.h \
+		../EidTestinfraLib/controlFileAccess.h ../EidTestinfraLib/Mutex.h \
+		../EidTestinfraLib/util.h ../EidTestinfraLib/xml.h ../EidTestinfraLib/Logger.h \
+		../EidTestinfraLib/ThreadDefines.h ../EidTestinfraLib/virtualCardAccess.h
+
+		
+SOURCES= APDURequest.cpp  Control.cpp  HexUtils.cpp  SoftCard.cpp \
+		SoftReaderManager.cpp  WinscardImpl.cpp  Carddata.cpp  FileStructure.cpp \
+		SoftReader.cpp  Transaction.cpp  linux/proxy_winscard.cpp \
+		linux/proxy_winscard_imp.cpp  linux/data_winscard.cpp \
+		../pcsctool/utils.cpp ../pcsctool/pcscerr2string.cpp \
+		../EidTestinfraLib/Logger.cpp ../EidTestinfraLib/controlFileAccess.cpp \
+		../EidTestinfraLib/virtualCardAccess.cpp ../EidTestinfraLib/Mutex.cpp \
+		../EidTestinfraLib/util.cpp ../EidTestinfraLib/xml.cpp \
+# Targets
+
+all: $(TARGET)
+
+$(TARGET): $(TARGET32) $(TARGET64)
+	lipo -create $(TARGET32) $(TARGET64) -output $(TARGET)
+
+$(TARGET32): $(SOURCES) $(HEADERS)
+	-mkdir -p ../_Binaries/32bit
+	$(CC) $(INCLUDEDIRS) $(CFLAGS32) $(SOURCES) $(LIBS) $(LFLAGS) -o $@
+
+$(TARGET64): $(SOURCES) $(HEADERS)
+	-mkdir -p ../_Binaries/64bit
+	$(CC) $(INCLUDEDIRS) $(CFLAGS64) $(SOURCES) $(LIBS) $(LFLAGS) -o $@
+
+clean:
+	-rm  $(TARGET) $(TARGET32) $(TARGET64)

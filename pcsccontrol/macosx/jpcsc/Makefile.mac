@@ -1,0 +1,31 @@
+TARGET = ../../../_Binaries/libjpcsc.jnilib
+TARGET32 = ../../../_Binaries/32bit/libjpcsc.jnilib
+TARGET64 = ../../../_Binaries/64bit/libjpcsc.jnilib
+
+SOURCES = jpcsc.c
+
+CC = gcc
+CFLAGS32 = -DDARWIN -Wall -Wno-pointer-sign -m32
+CFLAGS64 = -DDARWIN -Wall -Wno-pointer-sign -m64
+INCLUDE = -I/System/Library/Frameworks/PCSC.framework/Headers/ \
+	-I/System/Library/Frameworks/JavaVM.framework/Headers/
+LIBS = -lpthread -Wl,-framework -Wl,PCSC
+LFLAGS = -fPIC -headerpad_max_install_names -single_module -dynamiclib -compatibility_version 1.0.0
+
+all: $(TARGET)
+
+$(TARGET): $(TARGET32) $(TARGET64)
+	lipo -create $(TARGET32) $(TARGET64) -output $(TARGET)
+
+$(TARGET32): $(SOURCES)
+	-mkdir -p ../../../_Binaries/32bit/
+	$(CC) $(INCLUDE) $(CFLAGS32) $(LFLAGS) $(SOURCES) $(LIBS) -o $@
+
+$(TARGET64): $(SOURCES)
+	-mkdir -p ../../../_Binaries/64bit/
+	$(CC) $(INCLUDE) $(CFLAGS64) $(LFLAGS) $(SOURCES) $(LIBS) -o $@
+
+
+clean:
+	- rm $(TARGET) $(TARGET32) $(TARGET64)
+
