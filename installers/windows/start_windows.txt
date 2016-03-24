@@ -56,3 +56,11 @@ You can then use that test card to create virtual cards (which are an xml files)
 
 You do this by running 1_gen_virtual_cards/generate.
 For more info see 1_gen_virtual_cards/generate/readme.txt
+
+Using the resigning/OCSP tool
+=============================
+
+There is a docker container which includes an OCSP server and the
+ability to sign the files on the card using SHA256 hashes rather than
+SHA1. For more information, please see
+https://hub.docker.com/r/fedict/eid-test-ca/
