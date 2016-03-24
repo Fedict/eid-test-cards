@@ -26,7 +26,7 @@ xcopy "%~dp0\..\..\ThirdParty\windows-installer\vc_redist.x64.exe" "%~dp0..\_Pac
 
 ::copy overal readme and license file
 xcopy "%~dp0\..\installers\license.txt" "%~dp0..\_Package\"
-xcopy "%~dp0\..\installers\windows\readme.txt" "%~dp0..\_Package\"
+xcopy "%~dp0\..\installers\windows\start_windows.txt" "%~dp0..\_Package\"
 
 :end
 
