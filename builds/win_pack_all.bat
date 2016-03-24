@@ -24,5 +24,9 @@ xcopy "%~dp0\..\..\ThirdParty\windows-installer\vc_redist.x86.exe" "%~dp0..\_Pac
 xcopy "%~dp0\..\_Binaries\x64\Release\winsc*" "%~dp0..\_Package\3_PCSCProxy\x64\"
 xcopy "%~dp0\..\..\ThirdParty\windows-installer\vc_redist.x64.exe" "%~dp0..\_Package\3_PCSCProxy\x64\"
 
+::copy overal readme and license file
+xcopy "%~dp0\..\installers\license.txt" "%~dp0..\_Package\"
+xcopy "%~dp0\..\installers\windows\readme.txt" "%~dp0..\_Package\"
+
 :end
 
