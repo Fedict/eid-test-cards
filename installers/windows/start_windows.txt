@@ -50,9 +50,11 @@ application that we will test)
 Generating virtual cards
 ========================
 
-To generate virtual cards you need a test card.
+To generate virtual cards you need a card; this can be a test card or a
+production card.
 
-You can then use that test card to create virtual cards (which are an xml files).
+You can then use that card to create virtual cards (which are xml
+files).
 
 You do this by running 1_gen_virtual_cards/generate.
 For more info see 1_gen_virtual_cards/generate/readme.txt
