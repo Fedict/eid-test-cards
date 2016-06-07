@@ -935,12 +935,11 @@ static int testGetResponse(SCARDCONTEXT hCard)
 	}
 
 	/////////////////////// Tests on the real card /////////////////////
-
+	ret = sendAPDU(hCard, "00:22:41:B6:05:04:80:01:84:83", recvBuf, &recvBufLen);
+	CHECK_PCSC_RET("sendAPDU(MSE SET)", ret);
+	
 	ret = sendAPDU(hCard, "00:20:00:01:08:24:12:34:FF:FF:FF:FF:FF", recvBuf, &recvBufLen);
 	CHECK_PCSC_RET("sendAPDU(Verify PIN)", ret);
-
-	ret = sendAPDU(hCard, "00:22:41:B6:05:04:80:01:84:82", recvBuf, &recvBufLen);
-	CHECK_PCSC_RET("sendAPDU(MSE SET)", ret);
 
 	ret = sendAPDU(hCard, "00:2A:9E:9A:08:11:22:33:44:55:66:77:88", recvBuf, &recvBufLen);
 	CHECK_PCSC_RET("sendAPDU(Sign)", ret);
