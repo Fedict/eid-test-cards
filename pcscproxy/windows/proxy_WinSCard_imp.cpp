@@ -104,6 +104,9 @@ WINSCARDAPI LONG WINAPI imp_SCardListReadersW(     SCARDCONTEXT hContext,      L
 {
 	unsigned long len_a;
 	char* a_mszGroups = Utf16ToUtf8(mszGroups, &len_a);
+	if (NULL == mszGroups) {
+		a_mszGroups = NULL;
+	}
 
     bool bAutoAlloc = SCARD_AUTOALLOCATE == *pcchReaders;
     char *a_mszReaders = NULL;
@@ -134,11 +137,13 @@ WINSCARDAPI LONG WINAPI imp_SCardListReadersW(     SCARDCONTEXT hContext,      L
         {
             for (DWORD i = 0; i < *pcchReaders; i++)
                 mszReaders[i] = (wchar_t) a_mszReaders[i];
+
         }
+
     }
 
     if (bAllocatedMemory)
-        free(a_mszReaders);
+       //free(a_mszReaders);  // TODO
 	if(a_mszGroups != NULL)
 		free(a_mszGroups);
 
