@@ -167,6 +167,10 @@ LONG WinscardImpl::SCardListReaders(IN SCARDCONTEXT hContext, IN LPCSTR mszGroup
 		char  *buf   = new char[buflen];
 		//get hard readers names with buffer
 		result = pSCardListReaders(hContext, mszGroups, buf, &buflen);
+		if (SCARD_S_SUCCESS != result)
+		{
+			return result;
+		}
 		//return available length considering soft names and hard names
 		*pcchReaders = srmngr->calcListReadersLength(buf, buflen);
 		delete[] buf;
@@ -177,6 +181,10 @@ LONG WinscardImpl::SCardListReaders(IN SCARDCONTEXT hContext, IN LPCSTR mszGroup
 		DWORD  buflen = SCARD_AUTOALLOCATE;
 		//send to hard reader
 		result = pSCardListReaders(hContext, mszGroups, reinterpret_cast<LPTSTR>(&buf), &buflen);
+		if (SCARD_S_SUCCESS != result)
+		{
+			return result;
+		}
 		//calc len hard + soft names
 		const size_t newLen    = srmngr->calcListReadersLength(buf, buflen);
 		LPTSTR       * pRemote = reinterpret_cast<LPTSTR*>(mszReaders);
