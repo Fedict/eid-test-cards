@@ -1,0 +1,29 @@
+<friendlyName>myfriendlyname</friendlyName>
+<cardNumber>59200005668B</cardNumber>
+<nationalNumber>1972050152567</nationalNumber>
+<chipNumber>534C494E336600296CFF278E5519202E</chipNumber>
+<cardValidityBegin>17.02.2016</cardValidityBegin>
+<cardValidityEnd>19.02.2056</cardValidityEnd>
+<authValidityBegin>20160202</authValidityBegin> 
+<authValidityEnd>20560404</authValidityEnd> 
+<signValidityBegin>20160505</signValidityBegin> 
+<signValidityEnd>20560606</signValidityEnd> 
+<authCertPresent>true</authCertPresent>
+<signCertPresent>true</signCertPresent>
+<cardDeliveryMunicipality>MyMunicipality</cardDeliveryMunicipality>
+<familyName>MyLastname</familyName>
+<firstName>MyFirstname</firstName>
+<secondName></secondName>
+<initialOf3rdName></initialOf3rdName>
+<nationality>Belg</nationality>
+<birthLocationMunicipality>MyBirthCity</birthLocationMunicipality>
+<birthDate>25 MAI 1965</birthDate>
+<gender>M</gender>
+<nobleCondition></nobleCondition>
+<documentType>11</documentType>
+<duplicata></duplicata>
+<specialOriganizationCode></specialOriganizationCode>
+<memberOfFamily>yes</memberOfFamily>
+<streetAndNr>Mijnstraat 63</streetAndNr>
+<zipCode>1000</zipCode>
+<municipality>Brussel</municipality>

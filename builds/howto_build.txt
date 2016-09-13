@@ -1,0 +1,93 @@
+Needed from svn:
+  in <rootdir>\eidtestinfra:
+    http://10.2.250.30/svn/eidmw/trunk/eidtestinfra
+  in <rootdir>\ThirdParty
+    http://10.2.250.30/svn/ThirdParty/wix (only for Windows)
+    http://10.2.250.30/svn/ThirdParty/ant
+    http://10.2.250.30/svn/ThirdParty/unittest-cpp-1.3
+
+So you should have the following directory structure:
+  <parentdir>
+    eidtestinfra
+      _Binaries
+      _Builds
+      ...
+    ThirdParty
+      ant
+      unittest-cpp-1.3
+      ...
+
+
+Windows
+=======
+
+- install MS Visual Studio 2005, make sure to select both 32 and 64 bit development
+
+- install JDK1.6 from http://java.sun.com/javase/downloads/index.jsp
+
+- install ThirdParty/wix/ProjectAggregator2.msi
+  and ThirdParty/wix/Wix3-3.0.4415.msi
+
+- copy C:\Program Files\Common Files\Merge Modules\Microsoft_VC80_CRT_x86.msm
+  and C:\Program Files\Common Files\Merge Modules\policy_8_0_Microsoft_VC80_CRT_x86.msm
+  to ..\..\ThirdParty\wix\Merge Modules   !!!
+
+- update the RevisionNumber in EidInfraWix\Product.wxs and
+    change the <Product Id> to another unique value
+  optionally change the version number in pcscproxy/version.rc and
+  optionally change the version number in pcsccontrol/makeJarFile.xml
+
+- open a cmd.exe, cd to pcsccontrol and run the commands in build.bat
+
+- open _Builds\eidtestinfra.sln and:
+    * set the platform to x64 and rebulid all in Release
+    * set the platform to win32 and rebuild the eIDInfraWix
+       (this should rebuild all win32 binaries) and create the msi.
+
+The resulting .msi should be in EidInfraWix\bin\Release\
+
+
+Linux (Fedora 15)
+=================
+
+- install g++
+   to build the 64 bit stuff on 32 bit: libc6-dev-amd64 g++-multilib
+   to build the 32 bit stuff on 64 bit: 
+
+- install ant
+
+- install javac 1.6
+
+- make sure the pcsccontrol.jar has been build and is present
+  in pcsccontrol\saved; see the Windows build
+
+- in a command window, cd to _Builds and run ./release.sh
+
+You should now have the following file: eidtestinfra.tar.gz
+
+
+Mac OS X (10.6 and 10.7)
+========================
+
+- take a Snow Leopard (Mac OS 10.6)
+
+- make sure xcode is installed
+
+- make sure the pcsccontrol.jar has been build and is present
+  in pcsccontrol\saved; see the Windows build
+
+- in a command window, cd to _Builds and run
+    make -f Makefile.mac           (builds all into _Binaries/)
+    make -f Makefile.mac release   (produces the installer .dmg)
+
+You should now have a .dmg file in this dir.
+
+Testing
+=======
+
+Warning: the tests are not run automatically as part of the build process!
+
+Below are some test programs that are made (where possible for both 32 and 64 bit):
+ EidInfraTest: unit tests
+ pcsctool: to test the proxy
+ dlopenproxy: produces testdynamic to test the dynamic loading (Linux and Mac only)

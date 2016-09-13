@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Imports">
+      <UniqueIdentifier>{d1f10f63-a454-417f-b507-1938455edfe2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CommandTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlFileTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EidInfraTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileStructureTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoftCardTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoftReaderManagerTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualCardTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XMLTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pcscproxy\APDURequest.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pcscproxy\Carddata.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pcscproxy\Control.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pcscproxy\FileStructure.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pcscproxy\HexUtils.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pcsctool\pcscerr2string.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pcscproxy\SoftCard.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pcscproxy\SoftReader.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pcscproxy\SoftReaderManager.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pcscproxy\Transaction.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pcsctool\utils.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+    <ClCompile Include="utils2.cpp">
+      <Filter>Imports</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

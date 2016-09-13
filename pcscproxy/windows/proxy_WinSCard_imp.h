@@ -1,0 +1,80 @@
+#ifndef __ODJVCBJLVUHVMTLQYZYYRTQKEPHWJYCK__
+#define __ODJVCBJLVUHVMTLQYZYYRTQKEPHWJYCK__
+
+#include "proxy_WinSCard.h"
+
+extern const char *REAL_LIBS[];
+
+void proxy_init();
+void proxy_exit();
+
+// Use #undef to let the function go to the lib to be proxy-ed,
+// use #define to let the function go to the proxy lib (= this lib))
+// For example:
+//     #undef USE_PROXY_LIB_FOR_SCardEstablishContext  -> calls to SCardEstablishContext will go to pSCardEstablishContext
+//     #define USE_PROXY_LIB_FOR_SCardEstablishContext  -> calls to SCardEstablishContext will go to imp_SCardEstablishContext
+
+#undef USE_PROXY_LIB_FOR_SCardEstablishContext
+#undef USE_PROXY_LIB_FOR_SCardReleaseContext
+#undef USE_PROXY_LIB_FOR_SCardIsValidContext
+#undef USE_PROXY_LIB_FOR_SCardListReaderGroupsA
+#undef USE_PROXY_LIB_FOR_SCardListReaderGroupsW
+#define USE_PROXY_LIB_FOR_SCardListReadersA
+#define USE_PROXY_LIB_FOR_SCardListReadersW
+#undef USE_PROXY_LIB_FOR_SCardListCardsA
+#undef USE_PROXY_LIB_FOR_SCardListCardsW
+#undef USE_PROXY_LIB_FOR_SCardListInterfacesA
+#undef USE_PROXY_LIB_FOR_SCardListInterfacesW
+#undef USE_PROXY_LIB_FOR_SCardGetProviderIdA
+#undef USE_PROXY_LIB_FOR_SCardGetProviderIdW
+#undef USE_PROXY_LIB_FOR_SCardGetCardTypeProviderNameA
+#undef USE_PROXY_LIB_FOR_SCardGetCardTypeProviderNameW
+#undef USE_PROXY_LIB_FOR_SCardIntroduceReaderGroupA
+#undef USE_PROXY_LIB_FOR_SCardIntroduceReaderGroupW
+#undef USE_PROXY_LIB_FOR_SCardForgetReaderGroupA
+#undef USE_PROXY_LIB_FOR_SCardForgetReaderGroupW
+#undef USE_PROXY_LIB_FOR_SCardIntroduceReaderA
+#undef USE_PROXY_LIB_FOR_SCardIntroduceReaderW
+#undef USE_PROXY_LIB_FOR_SCardForgetReaderA
+#undef USE_PROXY_LIB_FOR_SCardForgetReaderW
+#undef USE_PROXY_LIB_FOR_SCardAddReaderToGroupA
+#undef USE_PROXY_LIB_FOR_SCardAddReaderToGroupW
+#undef USE_PROXY_LIB_FOR_SCardRemoveReaderFromGroupA
+#undef USE_PROXY_LIB_FOR_SCardRemoveReaderFromGroupW
+#undef USE_PROXY_LIB_FOR_SCardIntroduceCardTypeA
+#undef USE_PROXY_LIB_FOR_SCardIntroduceCardTypeW
+#undef USE_PROXY_LIB_FOR_SCardSetCardTypeProviderNameA
+#undef USE_PROXY_LIB_FOR_SCardSetCardTypeProviderNameW
+#undef USE_PROXY_LIB_FOR_SCardForgetCardTypeA
+#undef USE_PROXY_LIB_FOR_SCardForgetCardTypeW
+#define USE_PROXY_LIB_FOR_SCardFreeMemory
+#undef USE_PROXY_LIB_FOR_SCardAccessStartedEvent
+#undef USE_PROXY_LIB_FOR_SCardReleaseStartedEvent
+#undef USE_PROXY_LIB_FOR_SCardLocateCardsA
+#undef USE_PROXY_LIB_FOR_SCardLocateCardsW
+#undef USE_PROXY_LIB_FOR_SCardLocateCardsByATRA
+#undef USE_PROXY_LIB_FOR_SCardLocateCardsByATRW
+#define USE_PROXY_LIB_FOR_SCardGetStatusChangeA
+#define USE_PROXY_LIB_FOR_SCardGetStatusChangeW
+#undef USE_PROXY_LIB_FOR_SCardCancel
+#define USE_PROXY_LIB_FOR_SCardConnectA
+#define USE_PROXY_LIB_FOR_SCardConnectW
+#define USE_PROXY_LIB_FOR_SCardReconnect
+#define USE_PROXY_LIB_FOR_SCardDisconnect
+#define USE_PROXY_LIB_FOR_SCardBeginTransaction
+#define USE_PROXY_LIB_FOR_SCardEndTransaction
+#undef USE_PROXY_LIB_FOR_SCardCancelTransaction
+#define USE_PROXY_LIB_FOR_SCardState
+#define USE_PROXY_LIB_FOR_SCardStatusA
+#define USE_PROXY_LIB_FOR_SCardStatusW
+#define USE_PROXY_LIB_FOR_SCardTransmit
+#define USE_PROXY_LIB_FOR_SCardControl
+#define USE_PROXY_LIB_FOR_SCardGetAttrib
+#undef USE_PROXY_LIB_FOR_SCardSetAttrib
+#undef USE_PROXY_LIB_FOR_SCardUIDlgSelectCardA
+#undef USE_PROXY_LIB_FOR_SCardUIDlgSelectCardW
+#undef USE_PROXY_LIB_FOR_GetOpenCardNameA
+#undef USE_PROXY_LIB_FOR_GetOpenCardNameW
+#undef USE_PROXY_LIB_FOR_SCardDlgExtendedError
+
+#endif  // __ODJVCBJLVUHVMTLQYZYYRTQKEPHWJYCK__
