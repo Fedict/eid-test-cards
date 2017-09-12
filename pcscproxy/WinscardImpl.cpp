@@ -182,13 +182,7 @@ LONG WinscardImpl::SCardListReaders(IN SCARDCONTEXT hContext, IN LPCSTR mszGroup
 
 	if (mszReaders == NULL)   //ignore buffer
 	{
-		DWORD buflen = 5000;
-		char  *buf   = new char[buflen];
-		//get hard readers names with buffer
-		result = pSCardListReaders(hContext, mszGroups, buf, &buflen);
-		//return available length considering soft names and hard names
-		*pcchReaders = srmngr->calcListReadersLength(buf, buflen);
-		delete[] buf;
+		result = pSCardListReaders(hContext, mszGroups, NULL, pcchReaders);
 	}
 	else if (SCARD_AUTOALLOCATE == *pcchReaders)
 	{
